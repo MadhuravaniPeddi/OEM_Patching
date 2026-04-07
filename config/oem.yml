@@ -1,5 +1,5 @@
 ORACLE_SID: "OEMDB"
-ORACLE_HOME: "/u02/app/oracle/product/19.3.0/dbhome_1"
+ORACLE_HOME: "/u01/app/oracle/product/19.0.0/dbhome_1"
 PATH: "{{ ORACLE_HOME }}/bin:$PATH"
 OMS_HOME: "/u02/app/oracle/OMS135"
 GC_INST: "/u02/app/oracle/gc_inst"
