@@ -1,0 +1,8 @@
+ORACLE_SID: "OEMDB"
+ORACLE_HOME: "/u02/app/oracle/product/19.3.0/dbhome_1"
+PATH: "{{ ORACLE_HOME }}/bin:$PATH"
+OMS_HOME: "/u02/app/oracle/OMS135"
+GC_INST: "/u02/app/oracle/gc_inst"
+DOMAIN_HOME: "/u02/app/oracle/gc_inst/user_projects/domains/GCDomain"
+AGENT_HOME: "/u02/app/oracle/agent135/agent_13.5.0.0.0"
+DB_ENV: "/home/oracle/db.env"
