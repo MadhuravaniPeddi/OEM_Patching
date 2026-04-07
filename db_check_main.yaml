@@ -1,0 +1,14 @@
+- name: DB Check
+  hosts: all
+  gather_facts: false
+  become: yes
+  become_user: "{{ DB_USER }}"
+
+  vars_files:
+    - config/{{ instance }}.yaml
+
+  tasks: 
+      
+    - name: DB Check
+      import_role:
+        name: db_check
