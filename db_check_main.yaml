@@ -5,7 +5,7 @@
   become_user: "{{ DB_USER }}"
 
   vars_files:
-    - config/{{ instance }}.yaml
+    - config/{{ instance }}.yml
 
   tasks: 
       
