@@ -1,0 +1,38 @@
+- name: Check DB is running or not
+  ansible.builtin.shell: |
+    source {{ DB_ENV }}
+    sqlplus -s / as sysdba <<EOF
+    set pages 0 feedback off verify off heading off echo off
+    select name from v\$database;
+    exit;
+    EOF
+  args:
+    executable: /bin/bash
+  register: db_check
+  changed_when: false
+
+
+- name: Fail if DB not running
+  ansible.builtin.fail:
+    msg: "Database is not running"
+  when: db_check.stdout | trim == ""
+
+
+- name: Check DB Mode
+  ansible.builtin.shell: |
+    source {{ DB_ENV }}
+    sqlplus -s / as sysdba <<EOF
+    set pages 0 feedback off verify off heading off echo off
+    select open_mode from v\$database;
+    exit;
+    EOF
+  args:
+    executable: /bin/bash
+  register: db_mode
+  changed_when: false
+
+- name: Fail if DB not in READ WRITE mode
+  ansible.builtin.fail:
+    msg: "Database is not in READ WRITE mode"
+  when: "'READ WRITE' not in db_mode.stdout"
+
