@@ -1,3 +1,6 @@
+- name: Check user
+  shell: whoami
+  
 - name: Check DB is running or not
   ansible.builtin.shell: |
     source {{ DB_ENV }}
